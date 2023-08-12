@@ -9,12 +9,12 @@ public class Stack implements List {
     public void push(Node node) {
         if (head == null) {
             // Do something
-            head = node;
+            head = node; // add ได้เลย
 
         } else {
             // Do something else
-            node.next = head;
-            head = node;
+            node.next = head; // ชี้ที่เดียวกับ head
+            head = node; // move head to node
         }
     }
 
@@ -23,7 +23,7 @@ public class Stack implements List {
         // Fix this function
         if (head != null) {
             // Do something
-            head = head.next;
+            head = head.next; // move head to next node and that node will be delete auto eiei
         } else {
             System.out.println("Error: Stack Underflow");
         }
