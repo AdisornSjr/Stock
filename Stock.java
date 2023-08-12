@@ -31,12 +31,13 @@ public class Stock {
             double unrealizedGain = 0.0;
 
             // คิด profit/loss ที่เกิดจริง
-            while (list.top() != null && soldShares > 0) {
+            while (list.top() != null && soldShares > 0) { // ตามที่ จารให้มา
                 if (soldShares >= list.top().shares) {
                     //
                     realizedGain += (soldPrice - list.top().price) * list.top().shares;
                     soldShares -= list.top().shares;
                     list.pop();
+                    // check เมื่อขายหมดตั้งแต่ตัวแรก ก็คิด unrealized เลบ
                     if (soldShares == 0) {
                         Node currentNode = list.top();
                         while (currentNode != null) {
@@ -53,9 +54,9 @@ public class Stock {
 
                     // unrealized
 
-                    Node currentNode = list.top();
-                    while (currentNode != null) {
-                        unrealizedGain += (soldPrice - currentNode.price) * currentNode.shares;
+                    Node currentNode = list.top(); // set first to list.top()
+                    while (currentNode != null) { // loop to last
+                        unrealizedGain += (soldPrice - currentNode.price) * currentNode.shares; // คิด unrealized
                         currentNode = currentNode.next;
                     }
 
