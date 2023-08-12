@@ -37,6 +37,14 @@ public class Stock {
                     realizedGain += (soldPrice - list.top().price) * list.top().shares;
                     soldShares -= list.top().shares;
                     list.pop();
+                    if (soldShares == 0) {
+                        Node currentNode = list.top();
+                        while (currentNode != null) {
+                            unrealizedGain += (soldPrice - currentNode.price) * currentNode.shares;
+                            currentNode = currentNode.next;
+                        }
+
+                    }
                 } else {
                     //
                     realizedGain += (soldPrice - list.top().price) * soldShares;
